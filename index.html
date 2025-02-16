@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lời yêu thương</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 50px;
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+            overflow: hidden;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            max-width: 400px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .question {
+            font-size: 26px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #0057b7;
+        }
+        .btn {
+            font-size: 18px;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .yes:hover {
+            background-color: #388E3C;
+        }
+        .no {
+            background-color: white;
+            color: #ff5c8a;
+            border: 2px solid #ff5c8a;
+            position: relative;
+        }
+        .no:hover {
+            background-color: #ff5c8a;
+            color: white;
+        }
+        .no:hover {
+            position: absolute;
+            left: calc(50% + (Math.random() * 200px - 100px));
+            top: calc(50% + (Math.random() * 200px - 100px));
+        }
+        .message {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #0057b7;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fireworks {
+            0% { opacity: 1; transform: scale(0.5); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(1.5); }
+        }
+        .firework, .heart {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: yellow;
+            border-radius: 50%;
+            animation: fireworks 1s ease-out infinite;
+        }
+        .heart {
+            width: 15px;
+            height: 15px;
+            background-color: red;
+            clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 75%, 20% 100%, 0% 30%);
+            animation: fireworks 1.5s ease-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="question">Bạn có muốn nhận lời yêu thương không?</div>
+        <button class="btn yes" onclick="startFireworks()">Có</button>
+        <button class="btn no" onmouseover="moveButton()">Không</button>
+    </div>
+    
+    <div class="message" id="loveMessage">
+        <p>Bạn là người tuyệt vời và xứng đáng được yêu thương.</p>
+        <p>Mỗi ngày hãy luôn mỉm cười và tận hưởng cuộc sống.</p>
+        <p>Dù có khó khăn, nhưng bạn không bao giờ đơn độc.</p>
+        <p>Luôn có ai đó quan tâm và trân trọng bạn.</p>
+        <p>Hãy tự tin và theo đuổi giấc mơ của mình.</p>
+        <p>Thế giới này đẹp hơn vì có bạn!</p>
+        <p>Bạn xứng đáng với những điều tốt đẹp nhất.</p>
+        <p>Hãy tin vào bản thân và luôn tiến về phía trước!</p>
+        <p>Bạn là ánh sáng trong cuộc sống của nhiều người.</p>
+        <p>Chúc bạn luôn vui vẻ, hạnh phúc và bình an!</p>
+    </div>
+    
+    <script>
+        function startFireworks() {
+            document.getElementById("loveMessage").style.display = "block";
+            setInterval(() => {
+                let firework = document.createElement("div");
+                firework.classList.add("firework");
+                firework.style.left = Math.random() * window.innerWidth + "px";
+                firework.style.top = Math.random() * window.innerHeight + "px";
+                firework.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 1000);
+                
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.top = Math.random() * window.innerHeight + "px";
+                heart.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*100}, ${Math.random()*255})`;
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1500);
+            }, 200);
+        }
+        function moveButton() {
+            let button = document.querySelector(".no");
+            let x = Math.random() * (window.innerWidth - 200);
+            let y = Math.random() * (window.innerHeight - 100);
+            button.style.position = "absolute";
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+        }
+    </script>
+</body>
+</html>
